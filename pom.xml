@@ -5,6 +5,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>PieChartJava</name>
   <description>Java project for Netica Bayesian Network</description>
+	<repositories>
+		<repository>
+			<id>local-repo</id>
+			<url>file://${basedir}/local-repo</url>
+		</repository>
+	</repositories>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <resources>
@@ -26,4 +32,11 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+		<dependency>
+			<groupId>com.norsys</groupId>
+			<artifactId>netica</artifactId>
+			<version>5.0.4</version>
+		</dependency>
+  </dependencies>
 </project>

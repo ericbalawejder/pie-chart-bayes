@@ -1,5 +1,11 @@
 # PieChartBayes
 
+The local maven repo was generated with the following command:
+
+```shell
+$ mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file -Dfile=path/to/netica/NeticaJ.jar -DgroupId=com.norsys -DartifactId=netica -Dversion=5.0.4 -Dpackaging=jar -DlocalRepositoryPath=./local-repo
+```
+
 To build the snapshot jar:
 
 ```shell

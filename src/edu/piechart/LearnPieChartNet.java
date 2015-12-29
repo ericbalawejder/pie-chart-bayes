@@ -1,3 +1,4 @@
+// comment
 package edu.piechart;
 import java.io.File;
 import norsys.netica.*;

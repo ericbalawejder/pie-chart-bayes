@@ -1,10 +1,13 @@
 # PieChartBayes
 
+This maven project is for the Mac OSX version of Netica found at: https://www.norsys.com/netica-j.html#download
+
 The local maven repo was generated with the following command:
 
 ```shell
 $ mvn org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file -Dfile=path/to/netica/NeticaJ.jar -DgroupId=com.norsys -DartifactId=netica -Dversion=5.0.4 -Dpackaging=jar -DlocalRepositoryPath=./local-repo
 ```
+It holds the Netica dependencies libnetica.a and libNeticaJ.jnilib that maven can not find. 
 
 To build the snapshot jar:
 

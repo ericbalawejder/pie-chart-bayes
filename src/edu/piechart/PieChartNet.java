@@ -32,7 +32,6 @@ public class PieChartNet
 		Node similarColors = new Node ("SimilarColors", "yes, no", net);
 		Node multipleSlices = new Node ("MultipleSlices", "yes, no", net);
 			
-			
 		// childNode.addLink(parent node)
 		numberOfSlices.addLink (intendedMessage);
 		prominence.addLink (intendedMessage);

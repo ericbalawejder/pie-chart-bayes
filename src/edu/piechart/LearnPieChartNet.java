@@ -3,10 +3,10 @@ package edu.piechart;
 import java.io.File;
 import norsys.netica.*;
 
-public class LearnPieChartNet {
-
-  public static void main(String[] args) {
-
+public class LearnPieChartNet 
+{
+  public static void main(String[] args) 
+  {
     try {
 	Environ env = new Environ (null);
 	

@@ -1,10 +1,10 @@
 package edu.piechart;
 import norsys.netica.*;
      
-public class DoInferencePieChart {
-
-  public static void main (String[] args){
-    
+public class DoInferencePieChart 
+{
+  public static void main (String[] args)
+  {  
 	try {
 	Environ env = new Environ (null);
 
@@ -45,23 +45,29 @@ public class DoInferencePieChart {
 	numberOfSlices.finding().enterState (numOfSlices);
 	belief = intendedMessage.getBelief (message);          
 	System.out.println ("\nGiven a pie chart with " + numOfSlices + " slices,\n"+
-			    "the probability of a " + message + " message is " + belief);
+			"the probability of a " + message + " message is " + belief);
 
 	prominence.finding().enterState (prom);
 	belief = intendedMessage.getBelief (message);          
-	System.out.println ("\nGiven a pie chart with " + numOfSlices + " slices and prominence,\n" +
-			    "the probability of a " + message + " message is " + belief);
+	System.out.println ("\nGiven a pie chart with " + numOfSlices +
+			" slices and prominence,\n" + "the probability of a " + 
+			message + " message is " + belief);
 
 	similarColors.finding().enterState (simColors);
 	belief = intendedMessage.getBelief (message);          
-	System.out.println ("\nGiven a pie chart with " + numOfSlices + " slices, prominence\n" +
-			    "and " + simColors + " similar colors, the probability of a " + message + " message is " + belief);
+	System.out.println ("\nGiven a pie chart with " + numOfSlices + 
+			" slices, prominence\n" + "and " + simColors + 
+			" similar colors, the probability of a " + message + " message is " + 
+			belief);
 	
 	multipleSlices.finding().enterState (multSlices);
 	belief = intendedMessage.getBelief (message);          
-	System.out.println ("\nGiven a pie chart with " + numOfSlices + " slices, prominence,\n" +
-			    simColors + " similar colors and " + multSlices + " multiple slices, the probability of " + 
-			    "a " + message + " message is " + belief + "\n");
+	System.out.println ("\nGiven a pie chart with " + numOfSlices + 
+			" slices, prominence,\n" + simColors + " similar colors and " + 
+			multSlices + " multiple slices, the probability of " + "a " + message + 
+			" message is " + belief + "\n");
+	
+	net.write (new Streamer ("piechart_bayes_data/NetFiles/singleSliceTestEvidence.dne"));
 	
 	// Not strictly necessary, but a good habit.
 	net.finalize();   

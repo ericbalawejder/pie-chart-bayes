@@ -6,7 +6,6 @@ package edu.piechart;
 
 //needed for BufferedReader and FileReader
 import java.io.*;
-import java.io.IOException;
 
 public class ReadFile 
 {
@@ -14,7 +13,7 @@ public class ReadFile
 	{
 		try
 		{
-		// project file path
+		// project file path (No such file or directory)
 		//String fileName = "/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
 		
 		// system file path
@@ -26,12 +25,14 @@ public class ReadFile
 		
 		//System.out.println(fileName);
 		//System.out.println(file);
+		// look in net class
 		
 		// store the whole file into memory
 		String testInstance = file.openFile();
 					
 		// print file
 		System.out.println(testInstance);
+		
 		}
 	
 		catch (IOException e) 

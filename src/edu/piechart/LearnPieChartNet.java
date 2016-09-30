@@ -31,6 +31,9 @@ public class LearnPieChartNet
 	Streamer caseFile = new Streamer ("piechart_bayes_data/DataFiles/pieEvidenceCSV.cas");
 	net.reviseCPTsByCaseFile (caseFile, nodes, 1.0);
 
+	// Builds the junction tree of cliques (maximal complete subgraph).
+	net.compile();
+	
 	// Write the learned network to a dne file.
 	net.write (new Streamer ("piechart_bayes_data/NetFiles/LearnedPieEvidence.dne"));
 	

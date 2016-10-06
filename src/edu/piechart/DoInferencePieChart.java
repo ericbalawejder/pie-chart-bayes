@@ -107,9 +107,33 @@ public class DoInferencePieChart
 		}
 		System.out.println();
 	}
+	
+	// array print method overloaded for type String[]
+	public static void print(String[] array) 
+	{
+		for (int index = 0; index < array.length; index++) 
+		{
+			System.out.print(array[index] + "   ");
+		}
+		System.out.println();
+	}
 
 	// array print method with added number per line parameter
 	public static void multipleLinePrint(double[] array, int numberPerLine) 
+	{
+		for (int index = 0; index < array.length; index++) 
+		{
+			if (index != 0 && index % numberPerLine == 0) 
+			{
+				System.out.println();
+			}
+			System.out.print(array[index] + "   ");
+		}
+		System.out.println();
+	}
+	
+	// array print method overloaded for type String[]
+	public static void multipleLinePrint(String[] array, int numberPerLine) 
 	{
 		for (int index = 0; index < array.length; index++) 
 		{

@@ -9,49 +9,17 @@ import java.io.*;
 
 public class ReadFile 
 {
-	public static void main(String[] args) throws IOException 
-	{
-		try
-		{
-		// project file path (No such file or directory)
-		//String fileName = "/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
-		
-		// system file path
-		String fileName = "/Users/ericbalawejder/Workspaces/Eclipse 4.2 Java" +
-				"/PieChart/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
-		
-		// create ReadFile object that reads in a text file
-		ReadFile file = new ReadFile(fileName);
-		
-		//System.out.println(fileName);
-		//System.out.println(file);
-		// look in net class
-		
-		// store the whole file into memory
-		String testInstance = file.openFile();
-					
-		// print file
-		System.out.println(testInstance);
-		
-		}
-	
-		catch (IOException e) 
-		{
-			System.out.println(e.getMessage());
-		}
-	}
-	
 	// define path where file is
 	private String path; 
 
 	// ReadFile constructor 
 	public ReadFile(String filePath) 
 	{
-		path = filePath;		
+		path = filePath;
 	}
 
-	// open whole file and copy into a string 
-	public String openFile() throws IOException 
+	// open whole file and copy into a string array 
+	public String[] openFile() throws IOException 
 	{
 		// create ReadFile object
 		FileReader fileReader = new FileReader(path);
@@ -68,9 +36,12 @@ public class ReadFile
 			fileToString.append(characterData);
 			fileToString.append("\n");
 		}
+		// fileToString is StringBuilder object, .toString makes String object
+		// split string contents with , and place in array
+		String[] evidence = fileToString.toString().split(",");
 		// close resources
 		bufferReader.close();
-		// return the string
-		return fileToString.toString();
+		// return the array
+		return evidence;
 	}
 }

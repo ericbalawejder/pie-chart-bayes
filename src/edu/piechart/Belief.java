@@ -5,12 +5,10 @@ import norsys.netica.*;
 public class Belief 
 {
 	public String messageCategory;
-	public double belief;
+	// getBelief method returns a float
+	public float belief;
 	
-	public static void main(String[] args) 
-	{
-		
-	}
+	//public String[] messageCategoryNode = {""};
 	
 	Belief (Node node) throws NeticaException
 	{

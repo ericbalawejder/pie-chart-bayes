@@ -3,7 +3,7 @@ package edu.piechart;
 public class Arrays 
 {
 	// array print method
-	public static void print(double[] array) 
+	public static void print(float[] array) 
 	{
 		for (int index = 0; index < array.length; index++) 
 		{

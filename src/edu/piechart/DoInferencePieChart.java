@@ -22,66 +22,81 @@ public class DoInferencePieChart
 
 			// Builds the junction tree of cliques (maximal complete subgraph).
 			net.compile();
-
+			
+			// project file path, ReadFile can't find
+			//String fileName = "/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
+			
+			// system file path
+			String fileName = "/Users/ericbalawejder/Workspaces/Eclipse 4.2 Java" +
+					"/PieChart/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
+			
+			// create ReadFile object that reads in a text file
+			ReadFile file = new ReadFile(fileName);
+			
+			// place the file contents into an array.
+			String[] testInstance = file.openFile();
+							
+			// create an Instance object from the testInstance file
+			Instance instance = new Instance(testInstance);
+			
+			// print file
+			Arrays.print(testInstance);
+			
+			//System.out.println(instance.numberOfSlices);
+			//System.out.println(instance.prominence);
+			//System.out.println(instance.similarColors);
+			//System.out.println(instance.multipleSlices);
+			
+			// testing, what is a NodeList? Does it have index values?
+			//NodeList nodes = net.getNodes();
+			//System.out.println(nodes);
+			//int[] array = null;
+			//NodeList.mapStateList(array, nodes, nodes);
+			
+			//System.out.println(Node.getName());
+			System.out.println("---------");
+			
 			// Place evidence data here.
-			String numOfSlices = "fiveOrMore";
-			String prom = "yes";
-			String simColors = "no";
+			//String numOfSlices = "fiveOrMore";
+			//String prom = "yes";
+			//String simColors = "no";
+			//WTF?
 			String multSlices = "yes";
 
 			// enter evidence into the trained net
-			numberOfSlices.finding().enterState(numOfSlices);
-			prominence.finding().enterState(prom);
-			similarColors.finding().enterState(simColors);
+			numberOfSlices.finding().enterState(instance.numberOfSlices);
+			prominence.finding().enterState(instance.prominence);
+			similarColors.finding().enterState(instance.similarColors);
 			multipleSlices.finding().enterState(multSlices);
+			//multipleSlices.finding().enterState("yes");
+			//multipleSlices.finding().enterState(instance.multipleSlices);
 
 			// create beliefArray to store the probabilities of the message categories
-			double[] beliefArray = new double[11];
+			float[] beliefArray = new float[11];
+			
+			// create String array with IntendedMessage categories
+			String[] messageCategory = {"singleSlice", "fraction", "versus", "biggestSlice",
+					"majoritySlice", "addSlices","twoTiedForBiggest", "noMajority", "smallestSlice",
+					"closeToHalf", "numOfParts"};
+			
+			// calculate the probability of each message category and place in beliefArray
+			for (int index = 0; index < messageCategory.length; index++)
+			{
+				beliefArray[index] = intendedMessage.getBelief(messageCategory[index]);
+			}
 
-			// get the probability of each intended message and insert it into the beliefArray
-			double singleSliceProbability = intendedMessage.getBelief("singleSlice");
-			beliefArray[0] = singleSliceProbability;
+			System.out.println("\nGiven a pie chart with " + instance.numberOfSlices
+					+ " slices, " + instance.prominence + " prominence, " 
+					+ instance.similarColors
+					+ " similar colors and " + instance.multipleSlices
+					+ "multiple slices, the probability of " + "a " 
+					+ messageCategory[Arrays.findIndex(beliefArray)]
+					+ " message is " + Arrays.max(beliefArray) + "\n");
 
-			double fractionProbability = intendedMessage.getBelief("fraction");
-			beliefArray[1] = fractionProbability;
+			Arrays.multipleLinePrint(beliefArray, 5);
 
-			double versusProbability = intendedMessage.getBelief("versus");
-			beliefArray[2] = versusProbability;
-
-			double biggestSliceProbability = intendedMessage.getBelief("biggestSlice");
-			beliefArray[3] = biggestSliceProbability;
-
-			double majoritySliceProbability = intendedMessage.getBelief("majoritySlice");
-			beliefArray[4] = majoritySliceProbability;
-
-			double addSlicesProbability = intendedMessage.getBelief("addSlices");
-			beliefArray[5] = addSlicesProbability;
-
-			double twoTiedForBiggestProbability = intendedMessage.getBelief("twoTiedForBiggest");
-			beliefArray[6] = twoTiedForBiggestProbability;
-
-			double noMajorityProbability = intendedMessage.getBelief("noMajority");
-			beliefArray[7] = noMajorityProbability;
-
-			double smallestSliceProbability = intendedMessage.getBelief("smallestSlice");
-			beliefArray[8] = smallestSliceProbability;
-
-			double closeToHalfProbability = intendedMessage.getBelief("closeToHalf");
-			beliefArray[9] = closeToHalfProbability;
-
-			double numOfPartsProbability = intendedMessage.getBelief("numOfParts");
-			beliefArray[10] = numOfPartsProbability;
-
-			System.out.println("\nGiven a pie chart with " + numOfSlices
-					+ " slices, prominence,\n" + simColors
-					+ " similar colors and " + multSlices
-					+ " multiple slices, the probability of " + "a BLANK"
-					+ " message is " + max(beliefArray) + "\n");
-
-			multipleLinePrint(beliefArray, 5);
-
-			System.out.println("The highest probability is: " + max(beliefArray) 
-					+ " at index BLANK" );
+			System.out.println("The highest probability is: " + Arrays.max(beliefArray) 
+					+ " with message category " + messageCategory[Arrays.findIndex(beliefArray)]);
 						
 			// turns auto-updating on or off
 			net.setAutoUpdate(1);
@@ -96,68 +111,5 @@ public class DoInferencePieChart
 		{
 			e.printStackTrace();
 		}
-	}
-
-	// array print method
-	public static void print(double[] array) 
-	{
-		for (int index = 0; index < array.length; index++) 
-		{
-			System.out.print(array[index] + "   ");
-		}
-		System.out.println();
-	}
-	
-	// array print method overloaded for type String[]
-	public static void print(String[] array) 
-	{
-		for (int index = 0; index < array.length; index++) 
-		{
-			System.out.print(array[index] + "   ");
-		}
-		System.out.println();
-	}
-
-	// array print method with added number per line parameter
-	public static void multipleLinePrint(double[] array, int numberPerLine) 
-	{
-		for (int index = 0; index < array.length; index++) 
-		{
-			if (index != 0 && index % numberPerLine == 0) 
-			{
-				System.out.println();
-			}
-			System.out.print(array[index] + "   ");
-		}
-		System.out.println();
-	}
-	
-	// array print method overloaded for type String[]
-	public static void multipleLinePrint(String[] array, int numberPerLine) 
-	{
-		for (int index = 0; index < array.length; index++) 
-		{
-			if (index != 0 && index % numberPerLine == 0) 
-			{
-				System.out.println();
-			}
-			System.out.print(array[index] + "   ");
-		}
-		System.out.println();
-	}
-	
-	// method to find the max value in an array of doubles
-	public static double max(double[] array)
-	{
-		double max = 0;
-		
-		for (int index = 0; index < array.length; index++)
-		{
-			if (array[index] > max)
-			{
-				max = array[index];
-			}
-		}
-		return max;
 	}
 }

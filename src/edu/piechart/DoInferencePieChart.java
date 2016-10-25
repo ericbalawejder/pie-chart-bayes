@@ -23,12 +23,8 @@ public class DoInferencePieChart
 			// Builds the junction tree of cliques (maximal complete subgraph).
 			net.compile();
 			
-			// project file path, ReadFile can't find
-			//String fileName = "/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
-			
-			// system file path
-			String fileName = "/Users/ericbalawejder/Workspaces/Eclipse 4.2 Java" +
-					"/PieChart/piechart_bayes_data/DataFiles/pieEvidencePredict.cas";
+			// project file path
+			String fileName = "piechart_bayes_data/DataFiles/pieEvidencePredict2.cas";
 			
 			// create ReadFile object that reads in a text file
 			ReadFile file = new ReadFile(fileName);
@@ -38,38 +34,12 @@ public class DoInferencePieChart
 							
 			// create an Instance object from the testInstance file
 			Instance instance = new Instance(testInstance);
-			
-			// print file
-			Arrays.print(testInstance);
-			
-			//System.out.println(instance.numberOfSlices);
-			//System.out.println(instance.prominence);
-			//System.out.println(instance.similarColors);
-			//System.out.println(instance.multipleSlices);
-			
-			// testing, what is a NodeList? Does it have index values?
-			//NodeList nodes = net.getNodes();
-			//System.out.println(nodes);
-			//int[] array = null;
-			//NodeList.mapStateList(array, nodes, nodes);
-			
-			//System.out.println(Node.getName());
-			System.out.println("---------");
-			
-			// Place evidence data here.
-			//String numOfSlices = "fiveOrMore";
-			//String prom = "yes";
-			//String simColors = "no";
-			//WTF?
-			String multSlices = "yes";
-
-			// enter evidence into the trained net
+						
+			// enter evidence into the trained net. Must trim extra newline for enterState() input
 			numberOfSlices.finding().enterState(instance.numberOfSlices);
 			prominence.finding().enterState(instance.prominence);
 			similarColors.finding().enterState(instance.similarColors);
-			multipleSlices.finding().enterState(multSlices);
-			//multipleSlices.finding().enterState("yes");
-			//multipleSlices.finding().enterState(instance.multipleSlices);
+			multipleSlices.finding().enterState(instance.multipleSlices.trim());
 
 			// create beliefArray to store the probabilities of the message categories
 			float[] beliefArray = new float[11];
@@ -93,10 +63,8 @@ public class DoInferencePieChart
 					+ messageCategory[Arrays.findIndex(beliefArray)]
 					+ " message is " + Arrays.max(beliefArray) + "\n");
 
-			Arrays.multipleLinePrint(beliefArray, 5);
-
 			System.out.println("The highest probability is: " + Arrays.max(beliefArray) 
-					+ " with message category " + messageCategory[Arrays.findIndex(beliefArray)]);
+					+ " with message category = " + messageCategory[Arrays.findIndex(beliefArray)]);
 						
 			// turns auto-updating on or off
 			net.setAutoUpdate(1);

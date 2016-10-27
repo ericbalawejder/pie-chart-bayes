@@ -16,10 +16,10 @@ public class LearnPieChartNet
 			// Read in the net created by PieChartNet.java
 			Net net = new Net(new Streamer("piechart_bayes_data/NetFiles/pieEvidence.dne"));
 			NodeList nodes = net.getNodes();
-			int numNodes = nodes.size();
+			int numberOfNodes = nodes.size();
 
 			// Remove CPTables of nodes in net, so new ones can be learned.
-			for (int n = 0; n < numNodes; n++) 
+			for (int n = 0; n < numberOfNodes; n++) 
 			{
 				Node node = (Node) nodes.get(n);
 				node.deleteTables();
@@ -35,10 +35,10 @@ public class LearnPieChartNet
 			net.compile();
 
 			// Write the learned network to a dne file.
-			net.write(new Streamer("piechart_bayes_data/NetFiles/LearnedPieEvidence.dne"));
-
-			// Show warnings of REPORT_ERR, NOTICE_ERR, or WARNING_ERR.
-			System.out.println(NeticaError.getWarnings(NeticaError.WARNING_ERR,env));
+			Streamer stream = new Streamer("piechart_bayes_data/NetFiles/LearnedPieEvidence.dne");
+			net.write (stream);
+			
+			System.out.println("execution complete");
 
 			// Frees Netica object's native resources. Not strictly necessary, but a good habit.
 			net.finalize();

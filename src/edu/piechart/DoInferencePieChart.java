@@ -24,7 +24,7 @@ public class DoInferencePieChart
 			net.compile();
 			
 			// project file path
-			String fileName = "piechart_bayes_data/DataFiles/pieEvidencePredict2.cas";
+			String fileName = "piechart_bayes_data/DataFiles/pieEvidencePredictP1.cas";
 			
 			// create ReadFile object that reads in a text file
 			ReadFile file = new ReadFile(fileName);
@@ -70,8 +70,11 @@ public class DoInferencePieChart
 			net.setAutoUpdate(1);
 
 			// return vector of state probabilities
-			net.write(new Streamer("piechart_bayes_data/NetFiles/singleSliceTestEvidence.dne"));
-
+			Streamer stream = new Streamer("piechart_bayes_data/NetFiles/singleSliceTestEvidence.dne");
+			net.write (stream);
+			
+			System.out.println("execution complete");
+			
 			// garbage collector. Not strictly necessary, but a good habit.
 			net.finalize();
 		} 

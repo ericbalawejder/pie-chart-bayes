@@ -14,9 +14,6 @@ public class PieChartNet
 		// Create a new environment for a net, null = with out a password version.
 		Environ env = new Environ (null);
 		
-		// Create a net from a dne file and add to it.
-		//Net net = new Net (new Streamer ("piechart_bayes_data/pieEvidence.dne"));
-		
 		// Create a new net.
 		Net net = new Net();
 		net.setName("IntendedMessage");
@@ -51,6 +48,7 @@ public class PieChartNet
 		Streamer stream = new Streamer ("piechart_bayes_data/NetFiles/pieEvidence.dne");
 		net.write (stream);
 
+		System.out.println("execution complete");
 		// free resources immediately and safely; not strictly necessary, but a good habit
 		net.finalize();
 		}

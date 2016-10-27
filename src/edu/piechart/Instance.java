@@ -2,10 +2,10 @@ package edu.piechart;
 
 public class Instance 
 {
-	public String numberOfSlices;
-	public String prominence;
-	public String similarColors;
-	public String multipleSlices;
+	private String numberOfSlices;
+	private String prominence;
+	private String similarColors;
+	private String multipleSlices;
 	
 	public Instance(String[] evidence)
 	{
@@ -14,5 +14,25 @@ public class Instance
 		prominence = evidence[8];
 		similarColors = evidence[9];
 		multipleSlices = evidence[10];
+	}
+	
+	public String getNumberOfSlices()
+	{
+		return numberOfSlices;
+	}
+	
+	public String getProminence()
+	{
+		return prominence;
+	}
+	
+	public String getSimilarColors()
+	{
+		return similarColors;
+	}
+	
+	public String getMultipleSlices()
+	{
+		return multipleSlices;
 	}
 }

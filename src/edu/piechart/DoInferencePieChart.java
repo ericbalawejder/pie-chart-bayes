@@ -36,10 +36,10 @@ public class DoInferencePieChart
 			Instance instance = new Instance(testInstance);
 						
 			// enter evidence into the trained net. Must trim extra newline for enterState() input
-			numberOfSlices.finding().enterState(instance.numberOfSlices);
-			prominence.finding().enterState(instance.prominence);
-			similarColors.finding().enterState(instance.similarColors);
-			multipleSlices.finding().enterState(instance.multipleSlices.trim());
+			numberOfSlices.finding().enterState(instance.getNumberOfSlices());
+			prominence.finding().enterState(instance.getProminence());
+			similarColors.finding().enterState(instance.getSimilarColors());
+			multipleSlices.finding().enterState(instance.getMultipleSlices().trim());
 
 			// create beliefArray to store the probabilities of the message categories
 			float[] beliefArray = new float[11];
@@ -55,10 +55,10 @@ public class DoInferencePieChart
 				beliefArray[index] = intendedMessage.getBelief(messageCategory[index]);
 			}
 
-			System.out.println("\nGiven a pie chart with " + instance.numberOfSlices
-					+ " slices, " + instance.prominence + " prominence, " 
-					+ instance.similarColors
-					+ " similar colors and " + instance.multipleSlices
+			System.out.println("\nGiven a pie chart with " + instance.getNumberOfSlices()
+					+ " slices, " + instance.getProminence() + " prominence, " 
+					+ instance.getSimilarColors()
+					+ " similar colors and " + instance.getMultipleSlices()
 					+ "multiple slices, the probability of " + "a " 
 					+ messageCategory[Arrays.findIndex(beliefArray)]
 					+ " message is " + Arrays.max(beliefArray) + "\n");

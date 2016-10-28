@@ -24,7 +24,7 @@ public class DoInferencePieChart
 			net.compile();
 			
 			// project file path
-			String fileName = "piechart_bayes_data/DataFiles/pieEvidencePredictP1.cas";
+			String fileName = "piechart_bayes_data/DataFiles/pieEvidencePredictP2.cas";
 			
 			// create ReadFile object that reads in a text file
 			ReadFile file = new ReadFile(fileName);
@@ -40,32 +40,18 @@ public class DoInferencePieChart
 			prominence.finding().enterState(instance.getProminence());
 			similarColors.finding().enterState(instance.getSimilarColors());
 			multipleSlices.finding().enterState(instance.getMultipleSlices().trim());
-
-			// create beliefArray to store the probabilities of the message categories
-			float[] beliefArray = new float[11];
 			
-			// create String array with IntendedMessage categories
-			String[] messageCategory = {"singleSlice", "fraction", "versus", "biggestSlice",
-					"majoritySlice", "addSlices","twoTiedForBiggest", "noMajority", "smallestSlice",
-					"closeToHalf", "numOfParts"};
+			// getBeliefs() returns the probability of each state in parent node intendedMessage
+			float[] beliefArray = intendedMessage.getBeliefs();
 			
-			// calculate the probability of each message category and place in beliefArray
-			for (int index = 0; index < messageCategory.length; index++)
-			{
-				beliefArray[index] = intendedMessage.getBelief(messageCategory[index]);
-			}
-
-			System.out.println("\nGiven a pie chart with " + instance.getNumberOfSlices()
-					+ " slices, " + instance.getProminence() + " prominence, " 
-					+ instance.getSimilarColors()
-					+ " similar colors and " + instance.getMultipleSlices()
-					+ "multiple slices, the probability of " + "a " 
-					+ messageCategory[Arrays.findIndex(beliefArray)]
-					+ " message is " + Arrays.max(beliefArray) + "\n");
-
-			System.out.println("The highest probability is: " + Arrays.max(beliefArray) 
-					+ " with message category = " + messageCategory[Arrays.findIndex(beliefArray)]);
-						
+			System.out.println("Slices = " + instance.getNumberOfSlices()
+					+ ", prominence = " + instance.getProminence() 
+					+ ", similar colors = " + instance.getSimilarColors()
+					+ ", multiple slices = " + instance.getMultipleSlices() 
+					+ "The highest probability is: " + Arrays.max(beliefArray) 
+					+ " with message category = " 
+					+ intendedMessage.state(Arrays.findIndex(beliefArray)));
+			
 			// turns auto-updating on or off
 			net.setAutoUpdate(1);
 
@@ -73,7 +59,7 @@ public class DoInferencePieChart
 			Streamer stream = new Streamer("piechart_bayes_data/NetFiles/singleSliceTestEvidence.dne");
 			net.write (stream);
 			
-			System.out.println("execution complete");
+			System.out.println("\nexecution complete");
 			
 			// garbage collector. Not strictly necessary, but a good habit.
 			net.finalize();

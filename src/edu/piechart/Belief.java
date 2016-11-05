@@ -5,14 +5,14 @@ import norsys.netica.*;
 public class Belief 
 {
 	public String messageCategory;
-	// getBelief method returns a float
+	//getBelief method returns a float
 	public float belief;
-	
-	//public String[] messageCategoryNode = {""};
-	
+
+	//https://www.norsys.com/netica-j/docs/javadocs/index.html
+	//getBeliefs() method?
 	Belief (Node node) throws NeticaException
 	{
-		messageCategory = node.getName();
-		belief = node.getBelief(messageCategory);
+	messageCategory = node.getName();
+	belief = node.getBelief(messageCategory);
 	}
 }

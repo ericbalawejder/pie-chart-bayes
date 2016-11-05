@@ -9,7 +9,7 @@ public class Instance
 	
 	public Instance(String[] evidence)
 	{
-		//use array from ReadFile to place evidence
+		//use array from ReadFile to place evidence, no protection
 		numberOfSlices = evidence[7];
 		prominence = evidence[8];
 		similarColors = evidence[9];

@@ -1,6 +1,6 @@
 // ~->[DNET-1]->~
 
-// File created by an unlicensed user using Netica 5.04 on 10/26/16 at 22:28:47.
+// File created by an unlicensed user using Netica 5.04 on 11/05/16 at 13:37:20.
 
 bnet IntendedMessage {
 AutoCompile = TRUE;
@@ -18,7 +18,7 @@ node IntendedMessage {
 	numcases = 42;
 	title = "Intended Message";
 	whenchanged = 0;
-	belief = (0.5323674, 0.0665459, 0.05265087, 0.008318238, 0.0894485, 0.007107872, 0.02495472, 0.107829, 0.02843148, 0.02843148, 0.05391451);
+	belief = (0.09554344, 0.5095651, 0.1007915, 0.0159239, 0.2054814, 0.01020514, 0.01592391, 0.01290131, 0.01360685, 0.01360685, 0.006450655);
 	};
 
 node NumberOfSlices {
@@ -54,8 +54,8 @@ node NumberOfSlices {
 		   4,            // closeToHalf      
 		   5);           // numOfParts       ;
 	title = "Number of slices";
-	evidence = fiveOrMore;
-	belief = (0, 0, 0, 1);
+	evidence = two;
+	belief = (1, 0, 0, 0);
 	};
 
 node Prominence {
@@ -165,8 +165,8 @@ node MultipleSlices {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Multiple Slices";
-	evidence = yes;
-	belief = (1, 0);
+	evidence = no;
+	belief = (0, 1);
 	};
 ElimOrder = (Prominence, SimilarColors, MultipleSlices, IntendedMessage, NumberOfSlices);
 };

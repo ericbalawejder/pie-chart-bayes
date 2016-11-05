@@ -1,6 +1,6 @@
 // ~->[DNET-1]->~
 
-// File created by an unlicensed user using Netica 5.04 on 12/22/2015 at 15:30:54.
+// File created by an unlicensed user using Netica 5.04 on 10/28/16 at 19:32:15.
 
 bnet IntendedMessage {
 autoupdate = FALSE;
@@ -157,4 +157,5 @@ node MultipleSlices {
 		   3);           // numOfParts       ;
 	title = "Multiple Slices";
 	};
+ElimOrder = (Prominence, SimilarColors, MultipleSlices, IntendedMessage, NumberOfSlices);
 };

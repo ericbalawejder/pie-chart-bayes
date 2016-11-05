@@ -23,11 +23,8 @@ public class DoInferencePieChart
 			// Builds the junction tree of cliques (maximal complete subgraph).
 			net.compile();
 			
-			// project file path
-			String fileName = "piechart_bayes_data/DataFiles/pieEvidencePredictP2.cas";
-			
-			// create ReadFile object that reads in a text file
-			ReadFile file = new ReadFile(fileName);
+			// create ReadFile object that reads in a text file. Project file path
+			ReadFile file = new ReadFile("piechart_bayes_data/DataFiles/pieEvidencePredictP2.cas");
 			
 			// place the file contents into an array.
 			String[] testInstance = file.openFile();

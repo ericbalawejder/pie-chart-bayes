@@ -31,7 +31,7 @@ public class DoInferencePieChart
 							
 			// create an Instance object from the testInstance file
 			Instance instance = new Instance(testInstance);
-						
+			
 			// enter evidence into the trained net. Must trim extra newline for enterState() input
 			numberOfSlices.finding().enterState(instance.getNumberOfSlices());
 			prominence.finding().enterState(instance.getProminence());

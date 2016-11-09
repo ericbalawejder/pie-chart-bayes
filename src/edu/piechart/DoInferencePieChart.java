@@ -45,9 +45,9 @@ public class DoInferencePieChart
 					+ ", prominence = " + instance.getProminence() 
 					+ ", similar colors = " + instance.getSimilarColors()
 					+ ", multiple slices = " + instance.getMultipleSlices() 
-					+ "The highest probability is: " + Arrays.max(beliefArray) 
+					+ "The highest probability is: " + Array.max(beliefArray) 
 					+ " with message category = " 
-					+ intendedMessage.state(Arrays.findIndex(beliefArray)));
+					+ intendedMessage.state(Array.findIndex(beliefArray)));
 			
 			// turns auto-updating on or off
 			net.setAutoUpdate(1);

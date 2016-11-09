@@ -1,5 +1,5 @@
 package edu.piechart;
-import java.io.File;
+
 import norsys.netica.*;
 import norsys.neticaEx.aliases.Node;
 
@@ -7,7 +7,8 @@ public class PieChartNet
 {
 	public static void main(String[] args) 
 	{
-		try {
+		try 
+		{
 		// deprecated. use env.setNetClass(norsys.neticaEx.aliases.Node);
 		Node.setConstructorClass ("norsys.neticaEx.aliases.Node");	
 		
@@ -53,8 +54,21 @@ public class PieChartNet
 		net.finalize();
 		}
 		
-		catch (Exception e) {
-		e.printStackTrace();
+		catch (Exception e) 
+		{
+			e.printStackTrace();
 		}
 	}
+	
+	public static String[] getNodeNames(Net net) throws NeticaException
+	{
+		// Creates a node list and an array with the names of the nodes
+		NodeList nodes = net.getNodes();
+		String[] nodeNames = new String[nodes.size()];
+		for (int index = 0; index < nodes.size(); index++)
+		{
+			nodeNames[index] = nodes.getNode(index).getName();
+		}
+		return nodeNames;
+	}			
 }

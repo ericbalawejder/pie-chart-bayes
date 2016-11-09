@@ -12,14 +12,7 @@ public class DoInferencePieChart
 
 			// Must read in the learned net created by LearnPieChartNet.java.
 			Net net = new Net(new Streamer("piechart_bayes_data/NetFiles/LearnedPieEvidence.dne"));
-			
-			//Creates a node list and an array with the names of the nodes
-			NodeList nodes = net.getNodes();
-			String[] nodeNames = new String[nodes.size()];
-			for(int i=0; i<nodes.size(); i++){
-				nodeNames[i] =nodes.getNode(i).getName();
-			}
-			
+						
 			// get the nodes from the net for local use
 			Node intendedMessage = net.getNode("IntendedMessage");
 			Node numberOfSlices = net.getNode("NumberOfSlices");

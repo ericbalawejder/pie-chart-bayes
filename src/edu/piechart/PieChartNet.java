@@ -71,4 +71,25 @@ public class PieChartNet
 		}
 		return nodeNames;
 	}			
+	
+	public static float measureAccuracy(String prediction[], String[] annotations){
+		
+		int count =0;
+		for(int i =0; i<prediction.length;i++)
+		{
+			if(prediction[i]==annotations[i]){
+				count++;
+			}
+			
+		}
+		float accuracy=count/prediction.length;
+		return accuracy;
+	}
+	
+	public static net testNet(net Trained, String evidence){
+		String[] splitEvi = evidence.split(",");
+		Trained.compile();
+		return Trained;
+	}
+	
 }

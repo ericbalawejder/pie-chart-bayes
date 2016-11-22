@@ -1,5 +1,10 @@
 package edu.piechart;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
 import norsys.netica.*;
 
 public class LearnPieChartNet 
@@ -59,6 +64,29 @@ public class LearnPieChartNet
 			Node node = (Node) nodes.get(n);
 			node.deleteTables();
 		}
+	}
+	
+	public static void removeId(File f0, File f1, File f2, String id) throws IOException{
+		ReadFile Contents = new ReadFile(f0.getParent());
+		FileWriter f1FileOut = new FileWriter(f1);
+		FileWriter f2FileOut = new FileWriter(f2);
+		String[] data = Contents.openFile();
+		
+		String[] f1NewData = new String[data.length-1];
+		String[] f2NewData = new String[2];
+		
+		for(int i = 0; i< data.length; i++){
+			if(i != Integer.parseInt(id)){
+				f1NewData[i] = data[i];
+			}
+			if(i == 0 || i == Integer.parseInt(id) ){
+				f2NewData[i] = data[i];
+			}
+		}
+		
+		f1FileOut.write(f1NewData.toString());
+		f2FileOut.write(f2NewData.toString());
+
 	}
 }
 

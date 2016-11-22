@@ -86,10 +86,16 @@ public class PieChartNet
 		return accuracy;
 	}
 	
-	public static net testNet(net Trained, String evidence){
+	public static net testNet(Net Trained, String evidence){
 		String[] splitEvi = evidence.split(",");
-		Trained.compile();
-		return Trained;
+		NodeList nList = Trained.getNodes();
+		for(int i=0; i< Trained.sizeCompiled(); i++){
+			nList.set(i, splitEvi[i]);
+		}
+		Net newNet = new Net();
+		newNet.copyNodes(nList);
+		newNet.compile();
+		return newNet;
 	}
 	
 }

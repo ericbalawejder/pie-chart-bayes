@@ -3,6 +3,8 @@ package edu.piechart;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 import norsys.netica.*;
@@ -75,8 +77,13 @@ public class LearnPieChartNet
 		String[] f1NewData = new String[data.length-1];
 		String[] f2NewData = new String[2];
 		
+		 Pattern pattern = Pattern.compile("\\d+");
+		 Matcher match;
+		
 		for(int i = 0; i< data.length; i++){
-			if(i != Integer.parseInt(id)){
+			match = pattern.matcher(id);
+			String tempId = match.toString();
+			if(i != Integer.parseInt(tempId)){
 				f1NewData[i] = data[i];
 			}
 			if(i == 0 || i == Integer.parseInt(id) ){

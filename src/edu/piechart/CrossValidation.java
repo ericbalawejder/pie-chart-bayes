@@ -4,6 +4,8 @@ import norsys.netica.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CrossValidation 
 {
@@ -23,7 +25,10 @@ public class CrossValidation
 			
 			// predictions array stores testing intendedMessage values
 			String[] predictions = new String[annotations.length];
-
+			
+			// array with correct "Yes" or "No" predictions
+			String[] correctPredictions = new String[annotations.length];
+			
 			// 31 times
 			for (int index = 0; index < annotations.length; index++) 
 			{
@@ -85,6 +90,15 @@ public class CrossValidation
 				// convert type state to type string with .toString()
 				predictions[index] = intendedMessage.state(Array.findIndex(beliefArray)).toString();
 
+				if (predictions[index].contains(annotations[index]))
+				{
+					correctPredictions[index] = "Yes";
+				}
+				else
+				{
+					correctPredictions[index] = "No";
+				}
+				
 				// turns auto-updating on or off
 				testingNet.setAutoUpdate(1);
 
@@ -96,10 +110,14 @@ public class CrossValidation
 				trainingNet.finalize();
 				testingNet.finalize();
 			}
-			//Array.multipleLinePrint(annotations, 6);
+			
+			Array.multipleLinePrint(annotations, 6);
+			System.out.println();
+			Array.multipleLinePrint(predictions, 6);
 			
 			System.out.println(measureAccuracy(predictions, annotations));
 			
+			Array.multipleLinePrint(correctPredictions, 6);
 			System.out.println("execution complete");
 		}
 
@@ -136,24 +154,30 @@ public class CrossValidation
 		FileWriter f1FileOut = new FileWriter(f1);
 		FileWriter f2FileOut = new FileWriter(f2);
 		
-		String[] f1NewData = new String[data.length - 1];
-		String[] f2NewData = new String[2];
+		String[] f1NewTrainingData = new String[data.length - 1];
+		String[] f2NewTestingsData = new String[2];
+		
+		Pattern pattern = Pattern.compile("\\d+");
+		Matcher match;
 		
 		for (int index = 0; index < data.length; index++)
 		{
-			if(index != Integer.parseInt(id))
+			match = pattern.matcher(id);
+			String tempId = match.toString();
+			
+			if(index != Integer.parseInt(tempId))
 			{
-				f1NewData[index] = data[index];
+				f1NewTrainingData[index] = data[index];
 			}
 			
 			if (index == 0 || index == Integer.parseInt(id))
 			{
-				f2NewData[index] = data[index];
+				f2NewTestingsData[index] = data[index];
 			}
 		}
 		
-		f1FileOut.write(f1NewData.toString());
-		f2FileOut.write(f2NewData.toString());
+		f1FileOut.write(f1NewTrainingData.toString());
+		f2FileOut.write(f2NewTestingsData.toString());
 		
 		// close FileWriter resources
 		f1FileOut.close();

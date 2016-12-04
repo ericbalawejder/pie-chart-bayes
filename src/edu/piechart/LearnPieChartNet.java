@@ -68,7 +68,9 @@ public class LearnPieChartNet
 		}
 	}
 	
-	public static void removeId(File f0, File f1, File f2, String id) throws IOException{
+	//takes 3 file paths and the line number being cross examined and writes to files 2 and 3 
+	//the data to be cross validated
+	public static void removeId(File f0, File f1, File f2, int lineNumber) throws IOException{
 		ReadFile Contents = new ReadFile(f0.getParent());
 		FileWriter f1FileOut = new FileWriter(f1);
 		FileWriter f2FileOut = new FileWriter(f2);
@@ -77,16 +79,16 @@ public class LearnPieChartNet
 		String[] f1NewData = new String[data.length-1];
 		String[] f2NewData = new String[2];
 		
-		 Pattern pattern = Pattern.compile("\\d+");
-		 Matcher match;
+		 //Pattern pattern = Pattern.compile("\\d+");
+		 //Matcher match;
 		
 		for(int i = 0; i< data.length; i++){
-			match = pattern.matcher(id);
-			String tempId = match.toString();
-			if(i != Integer.parseInt(tempId)){
+			//match = pattern.matcher(id);
+			//String tempId = match.toString();
+			if(i != lineNumber){
 				f1NewData[i] = data[i];
 			}
-			if(i == 0 || i == Integer.parseInt(id) ){
+			if(i == 0 || i == lineNumber ){
 				f2NewData[i] = data[i];
 			}
 		}

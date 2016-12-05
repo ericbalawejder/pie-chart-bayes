@@ -29,7 +29,10 @@ public class LearnPieChartNet
 
 			// Builds the junction tree of cliques (maximal complete subgraph).
 			net.compile();
-
+			
+			// turns auto-updating on or off
+			net.setAutoUpdate(1);
+			
 			// Write the learned network to a dne file.
 			Streamer stream = new Streamer("piechart_bayes_data/NetFiles/LearnedPieEvidence.dne");
 			net.write (stream);

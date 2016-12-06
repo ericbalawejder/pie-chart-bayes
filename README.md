@@ -26,3 +26,20 @@ When creating a new class that uses Netica objects, you must change the Eclipse 
 ```shell
 -Djava.library.path=/<yourpath>/Netica/NeticaJ_504/bin
 ```
+
+You can add the Netica .dne files to the .gitignore. The time stamp is updated in the file every time the .java file is run. 
+From the project path repository:
+```shell
+$ nano .gitignore
+```
+Place in file:
+```shell
+piechart_bayes_data/NetFiles/*
+```
+Then run:
+```shell
+$ git rm -r —cached piechart_bayes_data/NetFiles/
+```
+```shell
+$ git update-index —assume-unchanged piechart_bayes_data/NetFiles/
+```

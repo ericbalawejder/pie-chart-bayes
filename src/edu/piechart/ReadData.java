@@ -2,6 +2,12 @@
 // https://docs.oracle.com/javase/7/docs/api/java/io/BufferedReader.html
 // https://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html
 
+/****************************************************************************
+ * Class returns file to String array[] where each line of the file is
+ * an index of the array[]
+ ****************************************************************************
+ */
+
 package edu.piechart;
 
 //needed for BufferedReader and FileReader

@@ -24,6 +24,7 @@ P43-B,majoritySlice,two,no,no,no
 P44-A,twoTiedForBiggest,three,no,yes,yes
 P44-B,majoritySlice,three,no,yes,yes
 P45,majoritySlice,three,no,no,yes
+P46,twoTiedForBiggest,two,no,no,yes
 P51,numOfParts,fiveOrMore,no,yes,yes
 P52-1,majoritySlice,two,yes,no,yes
 P54-1,singleSlice,two,yes,no,yes

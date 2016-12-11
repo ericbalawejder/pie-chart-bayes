@@ -3,7 +3,8 @@
 // File created by an unlicensed user using Netica 5.04 on 12/10/16 at 20:52:26.
 
 bnet IntendedMessage {
-autoupdate = FALSE;
+AutoCompile = TRUE;
+autoupdate = TRUE;
 
 node IntendedMessage {
 	kind = NATURE;
@@ -16,6 +17,8 @@ node IntendedMessage {
 		  (0.09756097,  0.09756097,  0.09756097,  0.09756097,  0.2926829,   0.07317073,  0.09756097,  0.04878049,  0.02439024,  0.02439024,  0.04878049);
 	numcases = 41;
 	title = "Intended Message";
+	whenchanged = 0;
+	belief = (0.01271537, 0.05086148, 0.1144383, 0.203446, 0.3646191, 0.09778668, 0.05086148, 0.04120723, 0.02173037, 0.02173037, 0.02060361);
 	};
 
 node NumberOfSlices {
@@ -28,7 +31,7 @@ node NumberOfSlices {
 		// two          three        four         fiveOrMore    // IntendedMessage  
 		  (0.4285714,   0.1428571,   0.1428571,   0.2857143,    // singleSlice      
 		   0.5714286,   0.1428571,   0.1428571,   0.1428571,    // fraction         
-		   0.1428571,   0.4285714,   0.2857143,   0.1428571,    // versus           
+		   0.2857143,   0.4285714,   0.1428571,   0.1428571,    // versus           
 		   0.1428571,   0.4285714,   0.2857143,   0.1428571,    // biggestSlice     
 		   0.4,         0.3333333,   0.1333333,   0.1333333,    // majoritySlice    
 		   0.1666667,   0.3333333,   0.3333333,   0.1666667,    // addSlices        
@@ -51,6 +54,8 @@ node NumberOfSlices {
 		   4,            // closeToHalf      
 		   5);           // numOfParts       ;
 	title = "Number of slices";
+	evidence = four;
+	belief = (0, 0, 1, 0);
 	};
 
 node Prominence {
@@ -86,6 +91,8 @@ node Prominence {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Prominence";
+	evidence = no;
+	belief = (0, 1);
 	};
 
 node SimilarColors {
@@ -121,6 +128,8 @@ node SimilarColors {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Similar Colors";
+	evidence = no;
+	belief = (0, 1);
 	};
 
 node MultipleSlices {
@@ -133,7 +142,7 @@ node MultipleSlices {
 		// yes          no            // IntendedMessage  
 		  (0.8,         0.2,          // singleSlice      
 		   0.2,         0.8,          // fraction         
-		   0.2,         0.8,          // versus           
+		   0.4,         0.6,          // versus           
 		   0.2,         0.8,          // biggestSlice     
 		   0.3846154,   0.6153846,    // majoritySlice    
 		   0.25,        0.75,         // addSlices        
@@ -156,6 +165,8 @@ node MultipleSlices {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Multiple Slices";
+	evidence = no;
+	belief = (0, 1);
 	};
 ElimOrder = (Prominence, SimilarColors, MultipleSlices, IntendedMessage, NumberOfSlices);
 };

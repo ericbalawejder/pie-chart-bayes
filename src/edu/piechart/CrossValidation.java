@@ -134,7 +134,9 @@ public class CrossValidation
 				testingNet.setAutoUpdate(1);
 
 				// Return vector of state probabilities
-				Streamer testStreamOut = new Streamer("piechart_bayes_data/NetFiles/testingTemp.dne");
+				//Streamer testStreamOut = new Streamer("piechart_bayes_data/NetFiles/testingTemp.dne");
+				// Creates 31 testingTemp.dne files for inspection
+				Streamer testStreamOut = new Streamer("piechart_bayes_data/NetFiles/testingTemp" + index + ".dne");
 				testingNet.write(testStreamOut);
 
 				// Garbage collector. Not strictly necessary, but a good habit.

@@ -3,7 +3,8 @@
 // File created by an unlicensed user using Netica 5.04 on 12/10/16 at 20:52:26.
 
 bnet IntendedMessage {
-autoupdate = FALSE;
+AutoCompile = TRUE;
+autoupdate = TRUE;
 
 node IntendedMessage {
 	kind = NATURE;
@@ -13,9 +14,11 @@ node IntendedMessage {
 	parents = ();
 	probs = 
 		// singleSlice  fraction     versus       biggestSlice majoritySlice addSlices   twoTiedForBigges noMajority smallestSlice closeToHalf numOfParts 
-		  (0.09756097,  0.09756097,  0.09756097,  0.09756097,  0.2926829,   0.07317073,  0.09756097,  0.04878049,  0.02439024,  0.02439024,  0.04878049);
+		  (0.09756097,  0.07317073,  0.1219512,   0.09756097,  0.2926829,   0.07317073,  0.09756097,  0.04878049,  0.02439024,  0.02439024,  0.04878049);
 	numcases = 41;
 	title = "Intended Message";
+	whenchanged = 0;
+	belief = (0.1247346, 0.3597235, 0.1315861, 0.0207891, 0.2682617, 0.0133231, 0.0207891, 0.01684302, 0.01776412, 0.01776412, 0.00842151);
 	};
 
 node NumberOfSlices {
@@ -27,8 +30,8 @@ node NumberOfSlices {
 	probs = 
 		// two          three        four         fiveOrMore    // IntendedMessage  
 		  (0.4285714,   0.1428571,   0.1428571,   0.2857143,    // singleSlice      
-		   0.5714286,   0.1428571,   0.1428571,   0.1428571,    // fraction         
-		   0.1428571,   0.4285714,   0.2857143,   0.1428571,    // versus           
+		   0.5,         0.1666667,   0.1666667,   0.1666667,    // fraction         
+		   0.25,        0.375,       0.25,        0.125,        // versus           
 		   0.1428571,   0.4285714,   0.2857143,   0.1428571,    // biggestSlice     
 		   0.4,         0.3333333,   0.1333333,   0.1333333,    // majoritySlice    
 		   0.1666667,   0.3333333,   0.3333333,   0.1666667,    // addSlices        
@@ -40,8 +43,8 @@ node NumberOfSlices {
 	numcases = 
 		                 // IntendedMessage  
 		  (7,            // singleSlice      
-		   7,            // fraction         
-		   7,            // versus           
+		   6,            // fraction         
+		   8,            // versus           
 		   7,            // biggestSlice     
 		   15,           // majoritySlice    
 		   6,            // addSlices        
@@ -51,6 +54,8 @@ node NumberOfSlices {
 		   4,            // closeToHalf      
 		   5);           // numOfParts       ;
 	title = "Number of slices";
+	evidence = two;
+	belief = (1, 0, 0, 0);
 	};
 
 node Prominence {
@@ -62,8 +67,8 @@ node Prominence {
 	probs = 
 		// yes          no            // IntendedMessage  
 		  (0.8,         0.2,          // singleSlice      
-		   0.8,         0.2,          // fraction         
-		   0.4,         0.6,          // versus           
+		   0.75,        0.25,         // fraction         
+		   0.3333333,   0.6666667,    // versus           
 		   0.2,         0.8,          // biggestSlice     
 		   0.2307692,   0.7692308,    // majoritySlice    
 		   0.25,        0.75,         // addSlices        
@@ -75,8 +80,8 @@ node Prominence {
 	numcases = 
 		                 // IntendedMessage  
 		  (5,            // singleSlice      
-		   5,            // fraction         
-		   5,            // versus           
+		   4,            // fraction         
+		   6,            // versus           
 		   5,            // biggestSlice     
 		   13,           // majoritySlice    
 		   4,            // addSlices        
@@ -86,6 +91,8 @@ node Prominence {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Prominence";
+	evidence = yes;
+	belief = (1, 0);
 	};
 
 node SimilarColors {
@@ -97,8 +104,8 @@ node SimilarColors {
 	probs = 
 		// yes          no            // IntendedMessage  
 		  (0.2,         0.8,          // singleSlice      
-		   0.2,         0.8,          // fraction         
-		   0.2,         0.8,          // versus           
+		   0.25,        0.75,         // fraction         
+		   0.1666667,   0.8333333,    // versus           
 		   0.6,         0.4,          // biggestSlice     
 		   0.3076923,   0.6923077,    // majoritySlice    
 		   0.75,        0.25,         // addSlices        
@@ -110,8 +117,8 @@ node SimilarColors {
 	numcases = 
 		                 // IntendedMessage  
 		  (5,            // singleSlice      
-		   5,            // fraction         
-		   5,            // versus           
+		   4,            // fraction         
+		   6,            // versus           
 		   5,            // biggestSlice     
 		   13,           // majoritySlice    
 		   4,            // addSlices        
@@ -121,6 +128,8 @@ node SimilarColors {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Similar Colors";
+	evidence = no;
+	belief = (0, 1);
 	};
 
 node MultipleSlices {
@@ -132,8 +141,8 @@ node MultipleSlices {
 	probs = 
 		// yes          no            // IntendedMessage  
 		  (0.8,         0.2,          // singleSlice      
-		   0.2,         0.8,          // fraction         
-		   0.2,         0.8,          // versus           
+		   0.25,        0.75,         // fraction         
+		   0.3333333,   0.6666667,    // versus           
 		   0.2,         0.8,          // biggestSlice     
 		   0.3846154,   0.6153846,    // majoritySlice    
 		   0.25,        0.75,         // addSlices        
@@ -145,8 +154,8 @@ node MultipleSlices {
 	numcases = 
 		                 // IntendedMessage  
 		  (5,            // singleSlice      
-		   5,            // fraction         
-		   5,            // versus           
+		   4,            // fraction         
+		   6,            // versus           
 		   5,            // biggestSlice     
 		   13,           // majoritySlice    
 		   4,            // addSlices        
@@ -156,6 +165,8 @@ node MultipleSlices {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Multiple Slices";
+	evidence = no;
+	belief = (0, 1);
 	};
 ElimOrder = (Prominence, SimilarColors, MultipleSlices, IntendedMessage, NumberOfSlices);
 };

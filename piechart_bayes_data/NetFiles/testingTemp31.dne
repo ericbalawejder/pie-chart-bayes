@@ -3,7 +3,8 @@
 // File created by an unlicensed user using Netica 5.04 on 12/10/16 at 20:52:26.
 
 bnet IntendedMessage {
-autoupdate = FALSE;
+AutoCompile = TRUE;
+autoupdate = TRUE;
 
 node IntendedMessage {
 	kind = NATURE;
@@ -16,6 +17,8 @@ node IntendedMessage {
 		  (0.09756097,  0.09756097,  0.09756097,  0.09756097,  0.2926829,   0.07317073,  0.09756097,  0.04878049,  0.02439024,  0.02439024,  0.04878049);
 	numcases = 41;
 	title = "Intended Message";
+	whenchanged = 0;
+	belief = (0.1185906, 0.03953022, 0.02964765, 0.0197651, 0.5313503, 0.01266685, 0.1185907, 0.06405361, 0.01688913, 0.01688913, 0.0320268);
 	};
 
 node NumberOfSlices {
@@ -51,6 +54,8 @@ node NumberOfSlices {
 		   4,            // closeToHalf      
 		   5);           // numOfParts       ;
 	title = "Number of slices";
+	evidence = two;
+	belief = (1, 0, 0, 0);
 	};
 
 node Prominence {
@@ -86,6 +91,8 @@ node Prominence {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Prominence";
+	evidence = no;
+	belief = (0, 1);
 	};
 
 node SimilarColors {
@@ -121,6 +128,8 @@ node SimilarColors {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Similar Colors";
+	evidence = no;
+	belief = (0, 1);
 	};
 
 node MultipleSlices {
@@ -156,6 +165,8 @@ node MultipleSlices {
 		   2,            // closeToHalf      
 		   3);           // numOfParts       ;
 	title = "Multiple Slices";
+	evidence = yes;
+	belief = (1, 0);
 	};
 ElimOrder = (Prominence, SimilarColors, MultipleSlices, IntendedMessage, NumberOfSlices);
 };

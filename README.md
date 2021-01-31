@@ -24,7 +24,7 @@ $ java -Djava.library.path=local-repo/ -classpath target/PieChart-0.0.1-SNAPSHOT
 
 When creating a new class that uses Netica objects, you must change the Eclipse vm arguments under run configurations to the Netica library:
 ```shell
--Djava.library.path=/<yourpath>/Netica/NeticaJ_504/bin
+-Djava.library.path=/<yourpath>/pie-chart-bayes/local-repo
 ```
 
 You can add the Netica .dne files to the .gitignore. The time stamp is updated in the file every time the .java file is run. 

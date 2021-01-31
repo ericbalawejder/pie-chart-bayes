@@ -1,7 +1,3 @@
-//Java documentation for reading in a file type
-//https://docs.oracle.com/javase/7/docs/api/java/io/BufferedReader.html
-//https://docs.oracle.com/javase/7/docs/api/java/io/FileReader.html
-
 /****************************************************************************
  * Class returns file to String
  ****************************************************************************
@@ -9,69 +5,62 @@
 
 package edu.piechart;
 
-//needed for BufferedReader and FileReader
 import java.io.*;
 
-public class ReadFileString 
-{
-	// define path where file is
-	private String path;
+public class ReadFileString {
 
-	// ReadFile constructor
-	public ReadFileString(String filePath) 
-	{
-		path = filePath;
-	}
+    private String path;
 
-	// open file and copy specified number of lines into a string
-	public String openFile(int numberOfLines) throws IOException 
-	{
-		// create ReadFile object
-		FileReader fileReader = new FileReader(path);
-		// create BufferedReader object for FileReader object
-		BufferedReader bufferReader = new BufferedReader(fileReader);
-		// create StringBuilder object to build the file into a string
-		StringBuilder fileToString = new StringBuilder();
+    public ReadFileString(String filePath) {
+        path = filePath;
+    }
 
-		String characterData;
+    // open file and copy specified number of lines into a string
+    public String openFile(int numberOfLines) throws IOException {
+        // create ReadFile object
+        FileReader fileReader = new FileReader(path);
+        // create BufferedReader object for FileReader object
+        BufferedReader bufferReader = new BufferedReader(fileReader);
+        // create StringBuilder object to build the file into a string
+        StringBuilder fileToString = new StringBuilder();
 
-		// index for number of lines in a file
-		int fileLine = 0;
+        String characterData;
 
-		while ((characterData = bufferReader.readLine()) != null && fileLine <= numberOfLines) 
-		{
-			// appened file contents to fileToString
-			fileToString.append(characterData);
-			fileToString.append("\n");
-			fileLine++;
-		}
-		// close resources
-		bufferReader.close();
-		// return the string
-		return fileToString.toString();
-	}
+        // index for number of lines in a file
+        int fileLine = 0;
 
-	// open whole file and copy into a string
-	public String openFile() throws IOException 
-	{
-		// create ReadFile object
-		FileReader fileReader = new FileReader(path);
-		// create BufferedReader object for FileReader object
-		BufferedReader bufferReader = new BufferedReader(fileReader);
-		// create StringBuilder object to build the file into a string
-		StringBuilder fileToString = new StringBuilder();
+        while ((characterData = bufferReader.readLine()) != null && fileLine <= numberOfLines) {
+            // appened file contents to fileToString
+            fileToString.append(characterData);
+            fileToString.append("\n");
+            fileLine++;
+        }
+        // close resources
+        bufferReader.close();
+        // return the string
+        return fileToString.toString();
+    }
 
-		String characterData;
+    // open whole file and copy into a string
+    public String openFile() throws IOException {
+        // create ReadFile object
+        FileReader fileReader = new FileReader(path);
+        // create BufferedReader object for FileReader object
+        BufferedReader bufferReader = new BufferedReader(fileReader);
+        // create StringBuilder object to build the file into a string
+        StringBuilder fileToString = new StringBuilder();
 
-		while ((characterData = bufferReader.readLine()) != null) 
-		{
-			// appened file contents to fileToString
-			fileToString.append(characterData);
-			fileToString.append("\n");
-		}
-		// close resources
-		bufferReader.close();
-		// return the string
-		return fileToString.toString();
-	}
+        String characterData;
+
+        while ((characterData = bufferReader.readLine()) != null) {
+            // appened file contents to fileToString
+            fileToString.append(characterData);
+            fileToString.append("\n");
+        }
+        // close resources
+        bufferReader.close();
+        // return the string
+        return fileToString.toString();
+    }
+
 }

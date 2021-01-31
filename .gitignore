@@ -1,2 +1,8 @@
 target/
 bin/
+.idea
+.iml
+.ipr
+.classpath
+.project
+.settings

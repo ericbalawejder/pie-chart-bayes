@@ -1,6 +1,6 @@
 // ~->[DNET-1]->~
 
-// File created by an unlicensed user using Netica 5.04 on 11/22/16 at 13:49:52.
+// File created by an unlicensed user using Netica 5.04 on 01/31/21 at 13:47:06.
 
 bnet IntendedMessage {
 AutoCompile = TRUE;
@@ -18,7 +18,7 @@ node IntendedMessage {
 	numcases = 42;
 	title = "Intended Message";
 	whenchanged = 0;
-	belief = (0.09554344, 0.5095651, 0.1007915, 0.0159239, 0.2054814, 0.01020514, 0.01592391, 0.01290131, 0.01360685, 0.01360685, 0.006450655);
+	belief = (0.09554344, 0.509565, 0.1007915, 0.0159239, 0.2054814, 0.01020514, 0.01592391, 0.01290131, 0.01360685, 0.01360685, 0.006450655);
 	};
 
 node NumberOfSlices {

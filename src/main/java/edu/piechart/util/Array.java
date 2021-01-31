@@ -1,4 +1,4 @@
-package edu.piechart;
+package main.java.edu.piechart.util;
 
 public class Array {
 

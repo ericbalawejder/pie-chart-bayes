@@ -1,5 +1,10 @@
-package edu.piechart;
+package main.java.edu.piechart.validation;
 
+import main.java.edu.piechart.io.ReadData;
+import main.java.edu.piechart.io.ReadFile;
+import main.java.edu.piechart.net.Instance;
+import main.java.edu.piechart.net.LearnPieChartNet;
+import main.java.edu.piechart.util.Array;
 import norsys.netica.Environ;
 import norsys.netica.Net;
 import norsys.netica.NeticaException;

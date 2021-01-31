@@ -3,7 +3,7 @@
  ****************************************************************************
  */
 
-package edu.piechart;
+package main.java.edu.piechart.io;
 
 import java.io.*;
 

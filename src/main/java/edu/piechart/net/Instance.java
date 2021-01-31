@@ -1,4 +1,4 @@
-package edu.piechart;
+package main.java.edu.piechart.net;
 
 public class Instance {
     private final String numberOfSlices;

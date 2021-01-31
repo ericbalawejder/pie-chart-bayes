@@ -1,5 +1,7 @@
-package edu.piechart;
+package main.java.edu.piechart.net;
 
+import main.java.edu.piechart.io.ReadFile;
+import main.java.edu.piechart.util.Array;
 import norsys.netica.*;
 
 public class DoInferencePieChart {

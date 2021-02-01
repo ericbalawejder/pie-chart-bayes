@@ -45,5 +45,5 @@ piechart_bayes_data/NetFiles/*
 ```
 Then run:
 ```shell
-$ git rm -r —cached piechart_bayes_data/NetFiles/
+$ git rm -r --cached piechart_bayes_data/NetFiles/
 ```

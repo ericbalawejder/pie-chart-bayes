@@ -32,6 +32,9 @@ These files are in the `local-repo` and you must set the `<absolute-path-to>` to
 ```
 -Djava.library.path=/<absolute-path-to>/pie-chart-bayes/local-repo
 ```
+Select "Modify options" shown in blue text. In the drop down menu select "Add VM options".
+In the text box highlighted in yellow, put the absolute path to the local-repo in the project.
+i.e. `-Djava.library.path=/Users/ericbalawejder/Development/pie-chart-bayes/local-repo`
 
 ![illustration](docs/vm-arguments.png)
 

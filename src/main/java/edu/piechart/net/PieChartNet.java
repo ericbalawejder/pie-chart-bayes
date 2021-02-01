@@ -1,6 +1,8 @@
 package main.java.edu.piechart.net;
 
-import norsys.netica.*;
+import norsys.netica.Environ;
+import norsys.netica.Net;
+import norsys.netica.Streamer;
 import norsys.neticaEx.aliases.Node;
 
 public class PieChartNet {
@@ -41,6 +43,8 @@ public class PieChartNet {
             similarColors.setTitle("Similar Colors");
             multipleSlices.setTitle("Multiple Slices");
 
+            System.out.println(net.getNodes());
+
             // Add probabilities.....
 
             // Write network to a dne file.
@@ -55,16 +59,6 @@ public class PieChartNet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static String[] getNodeNames(Net net) throws NeticaException {
-        // Creates a node list and returns an array with the names of the nodes
-        NodeList nodes = net.getNodes();
-        String[] nodeNames = new String[nodes.size()];
-        for (int index = 0; index < nodes.size(); index++) {
-            nodeNames[index] = nodes.getNode(index).getName();
-        }
-        return nodeNames;
     }
 
 }

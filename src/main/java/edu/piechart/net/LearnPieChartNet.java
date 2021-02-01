@@ -31,6 +31,8 @@ public class LearnPieChartNet {
             // turns auto-updating on or off
             net.setAutoUpdate(1);
 
+            System.out.println(net.getFindingsProbability());
+
             // Write the learned network to a dne file.
             Streamer stream = new Streamer("piechart_bayes_data/NetFiles/LearnedPieEvidence.dne");
             net.write(stream);
@@ -49,11 +51,10 @@ public class LearnPieChartNet {
     public static void removeCPTables(String filename) throws NeticaException {
         Net net = new Net(new Streamer(filename));
         NodeList nodes = net.getNodes();
-        int numberOfNodes = nodes.size();
 
         // Remove CPTables of nodes in net, so new ones can be learned.
-        for (Object o : nodes) {
-            Node node = (Node) o;
+        for (int n = 0; n < nodes.size(); n++) {
+            Node node = (Node) nodes.get(n);
             node.deleteTables();
         }
     }

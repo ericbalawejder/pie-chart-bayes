@@ -49,7 +49,7 @@ public class CrossValidation {
             String header = "pieID,IntendedMessage,NumberOfSlices,Prominence,SimilarColors,MultipleSlices";
 
             // Begin cross validation
-            for (int index = 1; index < trainingData.length; index++) {
+            for (int i = 1; i < trainingData.length; i++) {
                 // ----------train the net--------------------
 
                 // Use the empty net
@@ -62,18 +62,20 @@ public class CrossValidation {
                 LearnPieChartNet.removeCPTables(filePath);
 
                 // copyOfRange method does not support String[] type, must cast
-                String[] trainingTemp1 = Arrays.copyOfRange(trainingData, 0, index);
-                String[] trainingTemp2 = Arrays.copyOfRange(trainingData, index + 1, trainingData.length);
+                String[] trainingTemp1 = Arrays.copyOfRange(trainingData, 0, i);
+                String[] trainingTemp2 = Arrays.copyOfRange(trainingData, i + 1, trainingData.length);
 
                 // Combine trainingTemp arrays into one array for training instance
                 String[] trainingInstance = (String[]) ArrayUtils.addAll(trainingTemp1, trainingTemp2);
 
                 // Testing instance
-                String[] testingInstance = {header, trainingData[index]};
+                String[] testingInstance = {header, trainingData[i]};
 
                 // Create temporary files from training and testing arrays
-                File trainingDataTemp = File.createTempFile("trainingDataTemp", ".cas", new File("piechart_bayes_data/DataFiles/"));
-                File testingDataTemp = File.createTempFile("testingDataTemp", ".cas", new File("piechart_bayes_data/DataFiles/"));
+                File trainingDataTemp = File.createTempFile("trainingDataTemp", ".cas",
+                        new File("piechart_bayes_data/DataFiles/"));
+                File testingDataTemp = File.createTempFile("testingDataTemp", ".cas",
+                        new File("piechart_bayes_data/DataFiles/"));
 
                 // Uses absolute path, no library method for relative path
                 writeToFile(trainingDataTemp.getAbsolutePath(), trainingInstance);
@@ -124,13 +126,13 @@ public class CrossValidation {
                 float[] beliefArray = intendedMessage.getBeliefs();
 
                 // Convert type state to type string with .toString()
-                predictions[index] = intendedMessage.state(Array.findIndex(beliefArray)).toString();
+                predictions[i] = intendedMessage.state(Array.findIndex(beliefArray)).toString();
 
                 // Compare predictions array to annotations array
-                if (predictions[index].contains(annotations[index - 1])) {
-                    correctPredictions[index] = "Yes";
+                if (predictions[i].contains(annotations[i - 1])) {
+                    correctPredictions[i] = "Yes";
                 } else {
-                    correctPredictions[index] = "No";
+                    correctPredictions[i] = "No";
                 }
 
                 // Turns auto-updating on or off
@@ -139,7 +141,8 @@ public class CrossValidation {
                 // Return vector of state probabilities
                 //Streamer testStreamOut = new Streamer("piechart_bayes_data/NetFiles/testingTemp.dne");
                 // Creates 31 testingTemp.dne files for inspection
-                Streamer testStreamOut = new Streamer("piechart_bayes_data/NetFiles/testingTemp" + index + ".dne");
+                Streamer testStreamOut =
+                        new Streamer("piechart_bayes_data/NetFiles/testingTemp" + i + ".dne");
                 testingNet.write(testStreamOut);
 
                 // Garbage collector. Not strictly necessary, but a good habit.
@@ -167,13 +170,12 @@ public class CrossValidation {
     // compare predictions[] against annotations[]
     public static double measureAccuracy(String[] prediction, String[] annotations) {
         double counter = 0;
-        for (int index = 0; index < annotations.length; index++) {
+        for (int i = 0; i < annotations.length; i++) {
             // if prediction matches annotation, increment counter
-            if (prediction[index + 1].contains(annotations[index])) {
+            if (prediction[i + 1].contains(annotations[i])) {
                 counter++;
             }
         }
-
         // returns percent value (*100)
         return (counter / prediction.length) * 100;
     }

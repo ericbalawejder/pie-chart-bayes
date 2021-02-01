@@ -1,8 +1,11 @@
 target/
 bin/
 .idea
-.iml
+*.iml
 .ipr
 .classpath
 .project
 .settings
+
+# For development testing
+piechart_bayes_data/NetFiles/*

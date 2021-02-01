@@ -1,17 +1,48 @@
 package main.java.edu.piechart.net;
 
-import norsys.netica.*;
+import norsys.netica.NeticaException;
+import norsys.netica.Node;
+
+import java.util.Objects;
 
 public class Belief {
 
-    public String messageCategory;
-    public float belief;
+    private final String messageCategory;
+    private final float belief;
 
-    //https://www.norsys.com/netica-j/docs/javadocs/index.html
-    //getBeliefs() method?
-    Belief(Node node) throws NeticaException {
-        messageCategory = node.getName();
-        belief = node.getBelief(messageCategory);
+    public Belief(Node node) throws NeticaException {
+        this.messageCategory = node.getName();
+        this.belief = node.getBelief(this.messageCategory);
+    }
+
+    public String getMessageCategory() {
+        return this.messageCategory;
+    }
+
+    public float getBelief() {
+        return this.belief;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Belief belief1 = (Belief) o;
+        return Float.compare(belief1.belief, belief) == 0
+                && Objects.equals(messageCategory, belief1.messageCategory);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(messageCategory, belief);
+    }
+
+    @Override
+    public String toString() {
+        return "Belief{" +
+                "messageCategory='" + messageCategory + '\'' +
+                ", belief=" + belief +
+                '}';
     }
 
 }
